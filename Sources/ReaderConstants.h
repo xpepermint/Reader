@@ -15,9 +15,9 @@
 #import <Foundation/Foundation.h>
 
 #define READER_STANDALONE FALSE
-#define READER_ENABLE_MAIL TRUE
-#define READER_ENABLE_PRINT TRUE
-#define READER_DISABLE_IDLE FALSE
-#define READER_SHOW_SHADOW FALSE
+#define READER_ENABLE_MAIL FALSE
+#define READER_ENABLE_PRINT FALSE
+#define READER_DISABLE_IDLE TRUE
+#define READER_SHOW_SHADOW TRUE
 
 extern NSString *const kReaderCopyrightNotice;
