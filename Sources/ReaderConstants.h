@@ -19,5 +19,6 @@
 #define READER_ENABLE_PRINT FALSE
 #define READER_DISABLE_IDLE TRUE
 #define READER_SHOW_SHADOW TRUE
+#define READER_HIDE_ON_ENTER_BACKGROUND TRUE
 
 extern NSString *const kReaderCopyrightNotice;

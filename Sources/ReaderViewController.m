@@ -182,8 +182,26 @@
 		document = [object retain]; // Retain the supplied ReaderDocument object for our use
 	}
 
+#if (READER_HIDE_ON_ENTER_BACKGROUND == TRUE) // Option
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
+#endif // end of READER_HIDE_ON_ENTER_BACKGROUND Option
+    
 	return self;
 }
+
+#if (READER_HIDE_ON_ENTER_BACKGROUND == TRUE) // Option
+
+- (void) applicationDidEnterBackground:(id) sender 
+{
+    [document saveReaderDocument]; // Save any ReaderDocument object changes
+    [delegate dismissReaderViewController:self]; // Dismiss view controller
+}
+
+#endif // end of READER_HIDE_ON_ENTER_BACKGROUND Option
+
+
 
 /*
 - (void)loadView
@@ -426,6 +444,14 @@
 #ifdef DEBUGX
 	NSLog(@"%s", __FUNCTION__);
 #endif
+
+    
+#if (READER_HIDE_ON_ENTER_BACKGROUND == TRUE) // Option
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+#endif // end of READER_HIDE_ON_ENTER_BACKGROUND Option
+    
 
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 
